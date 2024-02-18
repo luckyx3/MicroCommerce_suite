@@ -1,0 +1,22 @@
+server:
+  port: 9296
+
+# Config Server Configuration to connect to the Git repository where common configuration is written for all the microservices
+spring:
+  application:
+    name: CONFIG-SERVER
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/luckyx3/spring-config-server
+          clone-on-start: true
+
+eureka:
+  instance:
+    prefer-ip-adderess: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}
